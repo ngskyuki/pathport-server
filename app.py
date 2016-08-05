@@ -23,9 +23,13 @@ class GetPath(Resource):
     conditions = GooglePlaceConditions(lat, lng)
     return get_path(conditions)
 
+class Stamper(Resource):
+  def post(self, place_id, stamp):
+    return { 'result' : 'OK" }
 
 #api.add_resource(PrintPath, '/')
 api.add_resource(GetPath, '/path/<string:lat>/<string:lng>')
+api.add_resource(Stamper, '/path/<string:place_id>/<string:stamp>')
 
 if __name__ == '__main__':
   app.run(debug = True)

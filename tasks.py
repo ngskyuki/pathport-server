@@ -105,11 +105,6 @@ def get_googleplace(query):
       "Can not get information"
     )
     return {'error' : errors}
-def build_googleplace_query(conditions):
-  
-  query = ''
-
-  return query
 
 def get_path(conditions):
 
@@ -142,3 +137,35 @@ def get_path(conditions):
 
   # then return the api-call result
   return result
+
+def save_stamp(place_id, stampType):
+  
+  isSucceed = True
+
+  return isSucceed
+
+# save user's action to the path
+def stamp(place_id, stamp):
+  
+  predicted_result = 'hoge'
+
+  stampType = 0
+
+  if stamp.lower() == 'KEEP':
+    stampType = 1
+  elif stamp.lower() == 'LIKE':
+    stampType = 2
+  elif stamp.lower() == 'LOVE':
+    stampType = 3
+  elif stamp.lower() == 'DISLIKE':
+    stampType = -1
+  elif stamp.lower() == 'HATE':
+    stampType = -2
+
+  print('Stamping job started')
+  job = q.enqueue_all(
+    func = save_stamp, args = (place_id, stampType, ), result_ttl = 50
+  )
+  print('JOB ID:', job.id)
+
+  return predicted_result

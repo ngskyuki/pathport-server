@@ -16,3 +16,10 @@ class GooglePlace(db.Model):
 
   def __repr__(self):
     return '<id {}>'.format(self.id)
+
+
+class Stamp(db.model):
+  __tablename__ = 'stamp'
+
+  id = db.Column(db.Integer, primary_key = True)
+
