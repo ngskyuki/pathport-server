@@ -50,36 +50,6 @@ class GooglePlaceConditions:
 
     return query
 
-def get_sample():
-  
-  errors = []
-
-  longitude = 35.5331548
-  latitude = 139.6936981
-  radius = 500
-  types = 'food'
-  key = APIKEY
-  
-  url = endpoint_googleplace['BASE'] + infotype_googleplace['PLACE'] 
-  url += 'json?' + 'location={},{}&radius={}&types={}&key={}'.format(longitude, latitude, radius, types, key)
-
-  print('Now, we use this URL...')
-  print(url)
-
-  try:
-    print('Request start...')
-    r = requests.get(url)
-    print('...Request end')
-  except:
-    errors.ap7pend(
-      #"Can not get information."
-      sys.exc_info()[0]
-    )
-    return {'error' : errors}
-  print('Result is...')
-  print(r.json())
-  return r.json()['results']
-
 # check the record having passed place id
 # if there are no place having passed place id then return true
 def duplication_check_googleplace(place_id):
